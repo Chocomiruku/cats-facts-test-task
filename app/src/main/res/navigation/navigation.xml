@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_facts_overview">
+
+    <fragment
+        android:id="@+id/navigation_facts_overview"
+        android:name="com.chocomiruku.catsfacts.FactsOverviewFragment"
+        android:label="fragment_facts_overview"
+        tools:layout="@layout/fragment_facts_overview" >
+        <action
+            android:id="@+id/action_factsOverviewFragment_to_factDetailsFragment"
+            app:destination="@id/factDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_favourites"
+        android:name="com.chocomiruku.catsfacts.FavouritesFragment"
+        android:label="fragment_favourites"
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_factDetailsFragment"
+            app:destination="@id/factDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/factDetailsFragment"
+        android:name="com.chocomiruku.catsfacts.FactDetailsFragment"
+        android:label="fragment_fact_details"
+        tools:layout="@layout/fragment_fact_details" />
+</navigation>

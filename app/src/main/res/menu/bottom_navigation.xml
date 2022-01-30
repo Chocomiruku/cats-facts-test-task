@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_facts_overview"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_fact_24"
+        android:title="@string/facts_from_web"/>
+    <item
+        android:id="@+id/navigation_favourites"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_favorites_filled_24"
+        android:title="@string/favourites"/>
+</menu>
