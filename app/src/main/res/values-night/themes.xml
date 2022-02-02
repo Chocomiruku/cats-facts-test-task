@@ -25,7 +25,7 @@
     <style name="ThemeOverlay.App.TabLayout" parent="">
         <item name="colorPrimary">@color/white</item>
         <item name="colorSurface">@color/green_500</item>
-        <item name="colorOnSurface">@color/gray</item>
+        <item name="colorOnSurface">@color/gray_800</item>
     </style>
 
     <style name="TextAppearance.App.Button" parent="TextAppearance.MaterialComponents.Button">

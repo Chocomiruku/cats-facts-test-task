@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_facts_overview"
-        android:name="com.chocomiruku.catsfacts.FactsOverviewFragment"
+        android:name="com.chocomiruku.catsfacts.overview.FactsOverviewFragment"
         android:label="fragment_facts_overview"
         tools:layout="@layout/fragment_facts_overview" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_favourites"
-        android:name="com.chocomiruku.catsfacts.FavouritesFragment"
+        android:name="com.chocomiruku.catsfacts.favourites.FavouritesFragment"
         android:label="fragment_favourites"
         tools:layout="@layout/fragment_favourites" >
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/factDetailsFragment"
-        android:name="com.chocomiruku.catsfacts.FactDetailsFragment"
+        android:name="com.chocomiruku.catsfacts.details.FactDetailsFragment"
         android:label="fragment_fact_details"
         tools:layout="@layout/fragment_fact_details" />
 </navigation>

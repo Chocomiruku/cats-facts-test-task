@@ -1,4 +1,4 @@
-package com.chocomiruku.catsfacts
+package com.chocomiruku.catsfacts.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
