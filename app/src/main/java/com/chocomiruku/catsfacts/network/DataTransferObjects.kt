@@ -1,13 +1,8 @@
 package com.chocomiruku.catsfacts.network
 
-import com.chocomiruku.catsfacts.database.DatabaseFact
 import com.chocomiruku.catsfacts.domain.Fact
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-
-
-//@JsonClass(generateAdapter = true)
-//data class NetworkFactContainer(val facts: List<NetworkFact>)
 
 
 @JsonClass(generateAdapter = true)
@@ -22,27 +17,26 @@ data class NetworkFact(
     val type: String,
     val createdAt: String,
     val deleted: Boolean,
-    val used: Boolean)
+    val used: Boolean
+)
 
 @JsonClass(generateAdapter = true)
 data class Status(
     val verified: Boolean,
-    val sentCount: Int)
+    val sentCount: Int
+)
+
+@JsonClass(generateAdapter = true)
+data class Photo(
+    @Json(name = "file") val imgSrcUrl: String
+)
 
 
 fun List<NetworkFact>.asDomainModel(): List<Fact> {
     return map {
         Fact(
             id = it.id,
-            text = it.text)
+            text = it.text
+        )
     }
 }
-
-//fun NetworkFactContainer.asDatabaseModel(): Array<DatabaseFact> {
-//    return facts.map {
-//        DatabaseFact (
-//            id = it.id,
-//            text = it.text,
-//            imgSrcUrl = null)
-//    }.toTypedArray()
-//}

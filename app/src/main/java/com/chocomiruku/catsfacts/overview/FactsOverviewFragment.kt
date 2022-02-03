@@ -26,16 +26,16 @@ class FactsOverviewFragment : Fragment() {
     ): View {
         val binding = FragmentFactsOverviewBinding.inflate(inflater)
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
         binding.factsList.adapter = FactAdapter(FactAdapter.OnClickListener {
-//            viewModel.displayFactDetails(it)
+            viewModel.displayFactDetails(it)
         })
 
-        viewModel.navigateToSelectedFact.observe(this, Observer {
+        viewModel.navigateToSelectedFact.observe(this, {
             if ( null != it ) {
-                this.findNavController().navigate(FactsOverviewFragmentDirections.actionFactsOverviewFragmentToFactDetailsFragment())
+                this.findNavController().navigate(FactsOverviewFragmentDirections.actionFactsOverviewFragmentToFactDetailsFragment(it))
                 viewModel.displayFactDetailsComplete()
             }
         })

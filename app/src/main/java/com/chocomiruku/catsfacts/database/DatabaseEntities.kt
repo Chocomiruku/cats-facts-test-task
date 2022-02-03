@@ -10,10 +10,7 @@ data class DatabaseFact constructor(
     val id: String,
     val text: String)
 
-fun List<DatabaseFact>.asDomainModel(): List<Fact> {
-    return map {
-        Fact(
-            id = it.id,
-            text = it.text)
-    }
-}
+fun DatabaseFact.asDomainModel() = Fact(
+    id = id,
+    text = text
+)

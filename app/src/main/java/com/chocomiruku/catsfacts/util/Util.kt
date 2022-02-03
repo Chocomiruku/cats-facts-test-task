@@ -1,5 +1,8 @@
 package com.chocomiruku.catsfacts.util
 
+
+enum class ApiStatus { LOADING, ERROR, DONE }
+
 private val PUNCTUATION = listOf(", ", "; ", ": ", " ")
 
 fun String.smartTruncate(length: Int): String {

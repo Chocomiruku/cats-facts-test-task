@@ -37,5 +37,10 @@
         android:id="@+id/factDetailsFragment"
         android:name="com.chocomiruku.catsfacts.details.FactDetailsFragment"
         android:label="fragment_fact_details"
-        tools:layout="@layout/fragment_fact_details" />
+        tools:layout="@layout/fragment_fact_details">
+        <argument
+            android:name="selectedFact"
+            app:argType="com.chocomiruku.catsfacts.domain.Fact"
+            />
+</fragment>
 </navigation>

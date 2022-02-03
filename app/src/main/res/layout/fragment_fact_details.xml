@@ -5,6 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".details.FactDetailsFragment">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.chocomiruku.catsfacts.details.FactDetailsViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -45,32 +52,49 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/header_text"
+                    app:text="@{viewModel.selectedFact.text}"
                     tools:text="@string/fact_text" />
+
+                <ImageView
+                    android:id="@+id/status_image"
+                    android:layout_width="@dimen/img_width"
+                    android:layout_height="@dimen/img_height"
+                    android:layout_marginStart="@dimen/in_between_margin"
+                    android:layout_marginTop="@dimen/img_top_margin"
+                    android:layout_marginEnd="@dimen/in_between_margin"
+                    android:contentDescription="@string/network_status_content_description"
+                    app:apiStatus="@{viewModel.status}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fact_text" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/cat_photo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/outer_margin"
-                    android:layout_marginTop="@dimen/in_between_margin"
-                    android:layout_marginEnd="@dimen/outer_margin"
+                    android:layout_width="@dimen/img_width"
+                    android:layout_height="@dimen/img_height"
+                    android:layout_marginStart="@dimen/in_between_margin"
+                    android:layout_marginTop="@dimen/img_top_margin"
+                    android:layout_marginEnd="@dimen/in_between_margin"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/cat_photo_content_description"
                     android:scaleType="centerCrop"
+                    app:imageUrl="@{viewModel.photoUrl}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fact_text"
                     app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-                    tools:layout_height="350dp"
-                    tools:layout_width="350dp"
-                    tools:srcCompat="@android:color/darker_gray" />
+                    app:srcCompat="@color/white"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                 <Button
                     android:id="@+id/favourites_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/in_between_margin"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginStart="@dimen/button_margin"
+                    android:layout_marginTop="@dimen/outer_margin"
+                    android:layout_marginEnd="@dimen/button_margin"
                     android:layout_marginBottom="@dimen/outer_margin"
+                    app:favouritesStatus="@{viewModel.isAddedToFavourites()}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

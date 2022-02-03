@@ -3,6 +3,8 @@ package com.chocomiruku.catsfacts.database
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.chocomiruku.catsfacts.domain.Fact
+import kotlinx.coroutines.Deferred
 
 @Dao
 interface FactDao {
@@ -14,9 +16,12 @@ interface FactDao {
 
     @Delete
     fun delete(fact: DatabaseFact)
+
+    @Query("SELECT * from databasefact WHERE id = :id LIMIT 1")
+    fun getFactFromFavourites(id: String) : DatabaseFact?
 }
 
-@Database(entities = [DatabaseFact::class], version = 2)
+@Database(entities = [DatabaseFact::class], version = 4)
 abstract class FactsDatabase : RoomDatabase() {
     abstract val factDao: FactDao
 }

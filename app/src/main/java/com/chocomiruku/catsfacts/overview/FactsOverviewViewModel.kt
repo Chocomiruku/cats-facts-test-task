@@ -1,28 +1,24 @@
 package com.chocomiruku.catsfacts.overview
 
 import android.app.Application
-import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.chocomiruku.catsfacts.database.getDatabase
 import com.chocomiruku.catsfacts.domain.Fact
-import com.chocomiruku.catsfacts.network.FactsApi
-import com.chocomiruku.catsfacts.network.NetworkFact
-import com.chocomiruku.catsfacts.network.asDomainModel
 import com.chocomiruku.catsfacts.repository.FactsRepository
+import com.chocomiruku.catsfacts.util.ApiStatus
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
-enum class FactsApiStatus { LOADING, ERROR, DONE }
 
 class FactsOverviewViewModel(application: Application) : ViewModel() {
 
-    private val factsRepository = FactsRepository()
+    private val database = getDatabase(application)
+    private val factsRepository = FactsRepository(database)
 
-    private val _status = MutableLiveData<FactsApiStatus>()
+    private val _status = MutableLiveData<ApiStatus>()
 
-    val status: LiveData<FactsApiStatus>
+    val status: LiveData<ApiStatus>
         get() = _status
 
     private val _facts = MutableLiveData<List<Fact>?>()
@@ -42,12 +38,12 @@ class FactsOverviewViewModel(application: Application) : ViewModel() {
 
     private fun getFacts() {
         viewModelScope.launch {
-            _status.value = FactsApiStatus.LOADING
+            _status.value = ApiStatus.LOADING
             try {
                 _facts.value = factsRepository.refreshFacts()
-                _status.value = FactsApiStatus.DONE
+                _status.value = ApiStatus.DONE
             } catch (e: Exception) {
-                _status.value = FactsApiStatus.ERROR
+                _status.value = ApiStatus.ERROR
                 _facts.value = ArrayList()
             }
         }

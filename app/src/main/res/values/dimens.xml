@@ -3,4 +3,9 @@
     <dimen name="outer_margin">24dp</dimen>
     <dimen name="in_between_margin">16dp</dimen>
     <dimen name="item_end_margin">20dp</dimen>
+    <dimen name="button_height">60dp</dimen>
+    <dimen name="button_margin">40dp</dimen>
+    <dimen name="img_top_margin">30dp</dimen>
+    <dimen name="img_width">370dp</dimen>
+    <dimen name="img_height">300dp</dimen>
 </resources>
