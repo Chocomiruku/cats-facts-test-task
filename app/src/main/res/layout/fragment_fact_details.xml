@@ -21,8 +21,10 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -57,34 +59,50 @@
 
                 <ImageView
                     android:id="@+id/status_image"
-                    android:layout_width="@dimen/img_width"
-                    android:layout_height="@dimen/img_height"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:layout_marginStart="@dimen/in_between_margin"
-                    android:layout_marginTop="@dimen/img_top_margin"
                     android:layout_marginEnd="@dimen/in_between_margin"
                     android:contentDescription="@string/network_status_content_description"
+                    android:scaleType="centerInside"
+                    app:apiStatus="@{viewModel.status}"
+                    app:layout_constraintBottom_toBottomOf="@id/cat_photo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/cat_photo"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/no_internet_text"
+                    style="@style/label_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-100dp"
+                    android:text="@string/no_internet_connection"
                     app:apiStatus="@{viewModel.status}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fact_text" />
+                    app:layout_constraintTop_toBottomOf="@id/status_image" />
+
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/cat_photo"
                     android:layout_width="@dimen/img_width"
                     android:layout_height="@dimen/img_height"
                     android:layout_marginStart="@dimen/in_between_margin"
-                    android:layout_marginTop="@dimen/img_top_margin"
+                    android:layout_marginTop="28dp"
                     android:layout_marginEnd="@dimen/in_between_margin"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/cat_photo_content_description"
                     android:scaleType="centerCrop"
                     app:imageUrl="@{viewModel.photoUrl}"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.444"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fact_text"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-                    app:srcCompat="@color/white"
-                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                    app:shapeAppearanceOverlay="@style/rounded_corners_img_view"
+                    tools:src="@tools:sample/backgrounds/scenic" />
 
                 <Button
                     android:id="@+id/favourites_button"

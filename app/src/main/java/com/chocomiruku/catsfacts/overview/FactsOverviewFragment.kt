@@ -1,11 +1,10 @@
 package com.chocomiruku.catsfacts.overview
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.chocomiruku.catsfacts.adapters.FactAdapter
@@ -16,7 +15,9 @@ class FactsOverviewFragment : Fragment() {
 
     private val viewModel: FactsOverviewViewModel by lazy {
         val activity = requireNotNull(this.activity)
-        ViewModelProvider(this, FactsOverviewViewModelFactory(activity.application)).get(FactsOverviewViewModel::class.java)
+        ViewModelProvider(this, FactsOverviewViewModelFactory(activity.application)).get(
+            FactsOverviewViewModel::class.java
+        )
     }
 
     override fun onCreateView(
@@ -34,8 +35,12 @@ class FactsOverviewFragment : Fragment() {
         })
 
         viewModel.navigateToSelectedFact.observe(this, {
-            if ( null != it ) {
-                this.findNavController().navigate(FactsOverviewFragmentDirections.actionFactsOverviewFragmentToFactDetailsFragment(it))
+            if (null != it) {
+                this.findNavController().navigate(
+                    FactsOverviewFragmentDirections.actionFactsOverviewFragmentToFactDetailsFragment(
+                        it
+                    )
+                )
                 viewModel.displayFactDetailsComplete()
             }
         })

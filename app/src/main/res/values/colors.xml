@@ -5,6 +5,7 @@
     <color name="violet_300">#b18fcf</color>
     <color name="violet_500">#9c27b0</color>
     <color name="gray_800">#263238</color>
+    <color name="gray_400">#a9a9aC</color>
     <color name="gray_100">#cfd8dc</color>
     <color name="white">#fafafa</color>
 </resources>

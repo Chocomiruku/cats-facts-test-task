@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.chocomiruku.catsfacts.databinding.ListItemFactBinding
 import com.chocomiruku.catsfacts.domain.Fact
-import com.chocomiruku.catsfacts.network.NetworkFact
 
 
-class FactAdapter( val onClickListener: OnClickListener ) : ListAdapter<Fact, FactAdapter.ViewHolder>(FactDiffCallback()) {
+class FactAdapter(private val onClickListener: OnClickListener) :
+    ListAdapter<Fact, FactAdapter.ViewHolder>(FactDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val fact = getItem(position)

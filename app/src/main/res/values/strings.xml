@@ -8,4 +8,6 @@
     <string name="add_to_favourites">Add to favourites</string>
     <string name="delete_from_favourites">Delete from favourites</string>
     <string name="network_status_content_description">Network status</string>
+    <string name="no_internet_connection">No Internet connection</string>
+    <string name="empty_list">Your favourites list is currently empty</string>
 </resources>

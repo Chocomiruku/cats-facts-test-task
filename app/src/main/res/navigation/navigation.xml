@@ -9,29 +9,31 @@
         android:id="@+id/navigation_facts_overview"
         android:name="com.chocomiruku.catsfacts.overview.FactsOverviewFragment"
         android:label="fragment_facts_overview"
-        tools:layout="@layout/fragment_facts_overview" >
+        tools:layout="@layout/fragment_facts_overview">
         <action
             android:id="@+id/action_factsOverviewFragment_to_factDetailsFragment"
             app:destination="@id/factDetailsFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:launchSingleTop="false"
+            app:launchSingleTop="true"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/navigation_facts_overview" />
     </fragment>
     <fragment
         android:id="@+id/navigation_favourites"
         android:name="com.chocomiruku.catsfacts.favourites.FavouritesFragment"
         android:label="fragment_favourites"
-        tools:layout="@layout/fragment_favourites" >
+        tools:layout="@layout/fragment_favourites">
         <action
             android:id="@+id/action_favouritesFragment_to_factDetailsFragment"
             app:destination="@id/factDetailsFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:launchSingleTop="false"
+            app:launchSingleTop="true"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/navigation_favourites" />
     </fragment>
     <fragment
         android:id="@+id/factDetailsFragment"
@@ -40,7 +42,6 @@
         tools:layout="@layout/fragment_fact_details">
         <argument
             android:name="selectedFact"
-            app:argType="com.chocomiruku.catsfacts.domain.Fact"
-            />
-</fragment>
+            app:argType="com.chocomiruku.catsfacts.domain.Fact" />
+    </fragment>
 </navigation>

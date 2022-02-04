@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="label_default">
         <item name="fontFamily">@font/proximanova_regular</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/gray_800</item>
     </style>
 
@@ -11,7 +12,14 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/violet_300</item>
     </style>
-    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+
+    <style name="label_status">
+        <item name="fontFamily">@font/proximanova_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray_400</item>
+    </style>
+
+    <style name="rounded_corners_img_view" parent="">
         <item name="cornerSize">10%</item>
     </style>
 </resources>

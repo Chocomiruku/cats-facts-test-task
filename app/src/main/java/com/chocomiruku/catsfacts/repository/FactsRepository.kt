@@ -1,6 +1,7 @@
 package com.chocomiruku.catsfacts.repository
 
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import com.chocomiruku.catsfacts.database.DatabaseFact
 import com.chocomiruku.catsfacts.database.FactsDatabase
 import com.chocomiruku.catsfacts.database.asDomainModel
@@ -14,11 +15,16 @@ import kotlinx.coroutines.withContext
 
 class FactsRepository(private val database: FactsDatabase) {
 
-    suspend fun refreshFacts() : List<Fact> {
+    val favouriteFacts: LiveData<List<Fact>> =
+        Transformations.map(database.factDao.getFavourites()) {
+            it.asDomainModel()
+        }
+
+    suspend fun refreshFacts(): List<Fact> {
         return FactsApi.retrofitService.getFactsAsync().await().asDomainModel()
     }
 
-    suspend fun getCatPhotoUrl() : String {
+    suspend fun getCatPhotoUrl(): String {
         return PhotosApi.retrofitService.getRandomPhotoAsync().await().imgSrcUrl
     }
 
@@ -34,7 +40,7 @@ class FactsRepository(private val database: FactsDatabase) {
         }
     }
 
-    suspend fun checkIfIsAddedToFavourites(fact: Fact) : Boolean {
+    suspend fun checkIfIsAddedToFavourites(fact: Fact): Boolean {
         var factInFavourites: DatabaseFact?
         withContext(Dispatchers.IO) {
             factInFavourites = database.factDao.getFactFromFavourites(fact.id)

@@ -1,7 +1,6 @@
 package com.chocomiruku.catsfacts.details
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -46,13 +45,11 @@ class FactDetailsViewModel(fact: Fact, application: Application) : ViewModel() {
 
     private fun getPhoto() {
         viewModelScope.launch {
-            _status.value = ApiStatus.LOADING
             try {
                 _photoUrl.value = factsRepository.getCatPhotoUrl()
-                _status.value = ApiStatus.DONE
             } catch (e: Exception) {
-                _status.value = ApiStatus.ERROR
                 _photoUrl.value = null
+                _status.value = ApiStatus.ERROR
             }
         }
     }

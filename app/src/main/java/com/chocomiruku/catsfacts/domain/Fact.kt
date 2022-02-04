@@ -12,7 +12,7 @@ data class Fact(
 ) : Parcelable {
 
     val shortFactText: String
-        get() = text.smartTruncate(78)
+        get() = text.smartTruncate(85)
 }
 
 fun Fact.asDatabaseModel() = DatabaseFact(

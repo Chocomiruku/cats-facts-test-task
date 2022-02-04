@@ -3,11 +3,11 @@ package com.chocomiruku.catsfacts.util
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.chocomiruku.catsfacts.R
 import com.chocomiruku.catsfacts.adapters.FactAdapter
@@ -20,7 +20,7 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Fact>?) {
 }
 
 @BindingAdapter("apiStatus")
-fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
+fun bindStatusImage(statusImageView: ImageView, status: ApiStatus?) {
     when (status) {
         ApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE
@@ -39,17 +39,42 @@ fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
     }
 }
 
+@BindingAdapter("apiStatus")
+fun bindStatusText(statusTextView: TextView, status: ApiStatus?) {
+    when (status) {
+        ApiStatus.ERROR -> {
+            statusTextView.visibility = View.VISIBLE
+        }
+        else -> {
+            statusTextView.visibility = View.GONE
+        }
+    }
+}
+
+@BindingAdapter("favouritesCount")
+fun bindFavouritesEmpty(favouritesEmptyTextView: TextView, facts: List<Fact>?) {
+    if (facts.isNullOrEmpty()) {
+        favouritesEmptyTextView.visibility = View.VISIBLE
+    } else {
+        favouritesEmptyTextView.visibility = View.GONE
+    }
+}
+
 @BindingAdapter("imageUrl")
 fun bindPhoto(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
+        imgView.visibility = View.VISIBLE
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
         GlideApp.with(imgView.context)
             .load(imgUri)
             .apply(
                 RequestOptions()
-                .placeholder(R.drawable.loading_animation)
-                .error(R.drawable.ic_broken_image))
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_broken_image)
+            )
             .into(imgView)
+    } ?: run {
+        imgView.visibility = View.INVISIBLE
     }
 }
 
@@ -63,8 +88,7 @@ fun bindFavouritesButton(button: Button, isAdded: Boolean) {
                 R.drawable.ic_baseline_favorites_border_24
             ), null, null, null
         )
-    }
-    else {
+    } else {
         button.text = button.context.getString(R.string.delete_from_favourites)
         button.setCompoundDrawablesWithIntrinsicBounds(
             AppCompatResources.getDrawable(

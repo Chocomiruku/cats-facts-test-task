@@ -23,12 +23,14 @@ class FactDetailsFragment : Fragment() {
 
         val viewModelFactory = FactDetailsViewModelFactory(fact, application)
         val factDetailsViewModel = ViewModelProvider(
-            this, viewModelFactory)[FactDetailsViewModel::class.java]
+            this, viewModelFactory
+        )[FactDetailsViewModel::class.java]
         binding.viewModel = factDetailsViewModel
 
         binding.favouritesButton.setOnClickListener {
             factDetailsViewModel.updateFavourites()
         }
+
 
         return binding.root
     }

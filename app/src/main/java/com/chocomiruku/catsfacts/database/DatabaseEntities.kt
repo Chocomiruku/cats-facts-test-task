@@ -8,9 +8,15 @@ import com.chocomiruku.catsfacts.domain.Fact
 data class DatabaseFact constructor(
     @PrimaryKey
     val id: String,
-    val text: String)
-
-fun DatabaseFact.asDomainModel() = Fact(
-    id = id,
-    text = text
+    val text: String
 )
+
+
+fun List<DatabaseFact>.asDomainModel(): List<Fact> {
+    return map {
+        Fact(
+            id = it.id,
+            text = it.text
+        )
+    }
+}

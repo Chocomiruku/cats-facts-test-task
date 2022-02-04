@@ -11,11 +11,11 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/green_800</item>
-
+        <!-- Tool bar style. -->
         <item name="toolbarStyle">@style/Widget.App.Toolbar</item>
-
+        <!-- Bottom navigation style. -->
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
-
+        <!-- Button style. -->
         <item name="materialButtonStyle">@style/Widget.App.Button</item>
     </style>
 
